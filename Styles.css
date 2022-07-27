@@ -1,15 +1,25 @@
 body {
     text-align: center;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1 {
     font-family: Monoton;
     font-size: 70px;
     margin: 0.2em;
+    box-shadow: 5px 10px #888888;
+    background-color: antiquewhite;
+    animation: flashing 15s infinite;
 }
 
 h2 {
     margin: 1em 0 0.25em;
+    background-color: #fff;
+    box-shadow: 5px 2px #888888;
 }
 
 h2:first-of-type {
@@ -23,7 +33,7 @@ td {
 }
 
 table {
-    border-collapse: collapse;
+    border-collapse: separate;
     margin: 0 auto;
 }
 
@@ -33,8 +43,11 @@ tr {
 
 td {
     width: 20px;
+    box-shadow: 5px 10px #888888;
+    background-color: aqua;
 }
 
 input[type=number] {
     width: 6em;
 }
+
