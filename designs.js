@@ -1,74 +1,69 @@
-// Select color input
-// Select size input
-var height, width, color;
-// When size is submitted by the user, call makeGrid()
-$(document).ready(function() {
-    $('sizePicker').submit(function makeGrid(grid) {
-        $('table').remove();
-        var rows = $('#input_height').val();
-        var cols = $('#input_width').val();
-            for (var i = 1; i <= rows; i++)
-            $('table').append('<tr></tr>');
-            for (var j = 1; j <= cols; j++) {
-                $('tr:last').append('<td></td>');
-                $('td').attr("class", 'cells');
-            }
-            grid.preventDefault();
+//setting variables
 
-            $('.cells').click(function(event) {
-                var paint = $('#colorPicker').val();
-                $(event.target).css('background-color', paint);
-            });
-    });
-});
+let height, width, color;
+const gridForm = document.getElementById("sizePicker");
+const gridRow = document.getElementById("inputHeight");
+const gridCell = document.getElementById("inputWidth");
+const colorPicker = document.getElementById("colorPicker");
+const pixelCanvas = document.getElementById("pixelCanvas");
+
+const setWidthColor = function(event) {
+    event.target.style.backgroundColor = colorPicker.value;
+}
+
+//event listener added to select grid size
+const gridMake = document.getElementById('sizePicker');
+
+// Adding code here
+
+//Draws grid
+function makeGrid(row, cell) {
+    for (let i = 1; i < row; i++) {
+        const tableRow = document.createElement("tr");
+        for (let j = 1; j < cell; j++) {
+            const tableCell = document.createElement("td");
+            tableRow.appendChild(tableCell);
+        }
+        pixelCanvas.appendChild(tableRow);
+    }
+}
 
 
-
-
-$('#sizePicker').submit(function (event)  {
-    event.preventDefault();
-    height = $('#inputHeight').val();
-    width = $('#inputWidth').val();
-    makeGrid(height, width);
+//add color
+pixelCanvas.addEventListener('click', function(event) {
+    color = colorPicker.value;
+    event.target.style.backgroundColor = colorPicker.value;
 })
 
+gridForm.addEventListener('click', (event) => {
+    gridForm.style.backgroundColor = color.value;
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function makeGrid(x,y) {
-    $('tr').remove();
-
-    // Your code goes here!
-    for (var i = 1; i <= x; i++) {
-        $('#pixelCanvas').append('<tr id=table' + i + '></tr>');
-        for (var j = 1; j <= y; j++){
-            $('#table' + i).append('<td></td>');
-        }
-    }
-    //add color
-    $('td').click(function addColor() {
-        color = $('#colorPicker').val();
-        if ($(this).attr('style')){
-            $(this).removeAttr('style')
-        } else {
-            $(this).attr('style', 'background-color:' + color);
-        }
-    })
+const handleSubmit = function(event) {
+    event.preventDefault();
+    makeGrid();
 }
+
+gridForm.addEventListener('submit', handleSubmit);
+
+
+
+
+
+
+
+
+
+
+
+
+
+gridMake.addEventListener('submit', function (event) {
+    event.preventDefault();
+    //Size input
+
+    const gridRow = document.getElementById('inputHeight').value;
+    const gridCell = document.getElementById('inputWidth').value;
+    makeGrid(gridRow, gridCell);
+});
+

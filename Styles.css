@@ -1,3 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+}
+
+
 body {
     text-align: center;
     background-color: blueviolet;
@@ -6,6 +14,33 @@ body {
     align-items: center;
     flex-direction: column;
 }
+
+.wrapper {
+    background-color: #b1a6a6;
+    width: 80vmin;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    padding: 40px 20px;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+}
+
+span {
+    position: relative;
+    font-size: 22px;
+    bottom: -3px;
+}
+
+html, body {
+    height: 100%;
+}
+
+
 
 h1 {
     font-family: Monoton;
@@ -47,7 +82,7 @@ td {
     background-color: aqua;
 }
 
-input[type=number] {
+input[type="number"] {
     width: 6em;
 }
 
